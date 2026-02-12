@@ -1,0 +1,94 @@
+/*body { font-family: sans-serif; margin: 20px; position: relative; }*/
+body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+}
+
+.search-box {
+    margin-bottom: 25px;
+}
+
+input[type="text"] {
+    padding: 8px;
+    font-size: 16px;
+    width: 250px;
+}
+
+button {
+    padding: 8px 14px;
+    font-size: 16px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.results {
+    margin-top: 25px;
+}
+
+.sentence {
+    background: #f4f4f4;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+}
+
+.error {
+    color: red;
+    margin-top: 15px;
+}
+
+.highlight-lt {
+    color: olive;
+    font-weight: bold;
+}
+
+.highlight-ru {
+    color: black;
+    font-weight: bold;
+}
+
+.loading {
+    color: #666;
+}
+
+.top-bar {
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px; /* space between score and user info */
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logout-btn {
+    background-color: gray;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.logout-btn:hover {
+    background-color: lightgrey;
+}
+
+.gap { width: 120px; margin: 0 4px; }
+.correct { color: green; border-color: green; }
+.wrong { color: red; border-color: red; }
+.translation { color: #666; font-size: 0.9em; }
+.word-static { font-weight: bold; color: #444; }
+
+#score {
+    position: absolute;
+    top: 50px; /* a bit below top-bar */
+    right: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}

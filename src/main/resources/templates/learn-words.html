@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Learn Words</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<h2>Learn a Word</h2>
+
+<div class="search-box">
+    <input id="wordInput" type="text" placeholder="Enter a word..." />
+    <button onclick="searchWord()">Search</button>
+</div>
+
+<div id="status" class="loading"></div>
+
+<div class="results" id="results">
+    <!-- sentences will appear here -->
+</div>
+
+<script>
+    async function searchWord() {
+
+        const word = document.getElementById("wordInput").value;
+        const resultsDiv = document.getElementById("results");
+        const statusDiv = document.getElementById("status");
+
+        resultsDiv.innerHTML = "";
+        statusDiv.textContent = "";
+
+        if (!word) {
+            statusDiv.textContent = "Please enter a word.";
+            statusDiv.className = "error";
+            return;
+        }
+
+        statusDiv.textContent = "Searching...";
+        statusDiv.className = "loading";
+
+        try {
+            const response = await fetch(`/api/learn/${word}`);
+
+            if (!response.ok) {
+                throw new Error("Word not found");
+            }
+
+            const searchResult = await response.json();
+
+            statusDiv.textContent = "";
+            resultsDiv.innerHTML = "";
+
+            const ltPhrases = searchResult.ltPhrases || [];
+            const ruPhrases = searchResult.ruPhrases || [];
+            const ruWords = Array.from(searchResult.ruAssumedTranslations || []);
+
+            if (ltPhrases.length === 0) {
+                statusDiv.textContent = "No examples found.";
+                statusDiv.className = "error";
+                return;
+            }
+
+            function escapeRegex(text) {
+                return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            }
+
+            // Highlight Lithuanian searched word
+            function highlightLt(sentence, word) {
+                const regex = new RegExp(`(${escapeRegex(word.trim().replaceAll("=",""))})`, "gi");
+                return sentence.replace(regex, '<span class="highlight-lt">$1</span>');
+            }
+
+            // Highlight Russian assumed translations
+            function highlightRu(sentence, ruWords) {
+
+                ruWords.forEach(ru => {
+                    const escaped = escapeRegex(ru);
+                    // Cyrillic-aware boundaries
+                    const regex = new RegExp(`(^|[^А-Яа-яЁё])(${escaped})(?=[^А-Яа-яЁё]|$)`, "gi");
+                    sentence = sentence.replace(regex, '$1<span class="highlight-ru">$2</span>');
+                });
+                return sentence;
+            }
+
+            // pair LT and RU by index
+            const count = Math.min(ltPhrases.length, ruPhrases.length, 20);
+
+            for (let i = 0; i < count; i++) {
+
+                const ltHighlighted = highlightLt(ltPhrases[i], word.trim());
+                const ruHighlighted = highlightRu(ruPhrases[i], ruWords);
+
+                const div = document.createElement("div");
+                div.className = "sentence";
+
+                div.innerHTML = `
+            <div class="lt">${ltHighlighted}</div>
+            <div class="ru">${ruHighlighted}</div>
+        `;
+
+                resultsDiv.appendChild(div);
+            }
+
+        } catch (e) {
+            console.error(e);
+            statusDiv.textContent = "Failed to load examples.";
+            statusDiv.className = "error";
+        }
+    }   <!-- THIS WAS MISSING -->
+
+    // press ENTER to search
+    document.getElementById("wordInput")
+        .addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                searchWord();
+            }
+        });
+</script>
+
+</body>
+</html>
