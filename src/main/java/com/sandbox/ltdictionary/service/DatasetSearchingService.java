@@ -25,7 +25,7 @@ public class DatasetSearchingService {
     public DatasetSearchingService(@Value("${dataset-lt.absolute-path}") String ltAbsPath, @Value("${dataset-ru.absolute-path}") String ruAbsPath) {
         LocalDateTime start = LocalDateTime.now();
         this.dataset = DatasetUtil.loadDataset(ltAbsPath, ruAbsPath);
-        log.info("Dataset has been initialized. Total time: {}", Duration.between(start, LocalDateTime.now()).withNanos(0));
+        log.info("Dataset has been loaded and initialized. Total time: {}", Duration.between(start, LocalDateTime.now()).withNanos(0));
     }
 
     public SearchResult findExamples(String word, int limit, boolean fast) {
