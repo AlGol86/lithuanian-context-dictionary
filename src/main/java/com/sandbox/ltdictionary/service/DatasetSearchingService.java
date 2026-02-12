@@ -3,6 +3,7 @@ package com.sandbox.ltdictionary.service;
 import com.sandbox.ltdictionary.service.entry.SearchResult;
 import com.sandbox.ltdictionary.service.entry.SearchSlice;
 import com.sandbox.ltdictionary.service.util.DatasetUtil;
+import io.micrometer.observation.Observation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 @Slf4j
 @Service
@@ -28,22 +31,22 @@ public class DatasetSearchingService {
         log.info("Dataset has been loaded and initialized. Total time: {}", Duration.between(start, LocalDateTime.now()).withNanos(0));
     }
 
-    public SearchResult findExamples(String word, int limit, boolean fast) {
-        SearchSlice matchesSlice = findMatchesSlice(word, autoscrollCounter.getOrDefault(word, 0), limit, fast);
+    public SearchResult findExamples(String word, int limit, boolean fast, boolean ruLtDirection) {
+        SearchSlice matchesSlice = findMatchesSlice(word, autoscrollCounter.getOrDefault(word, 0), limit, fast, ruLtDirection ? Map.Entry::getValue : Map.Entry::getKey);
         autoscrollCounter.put(word, matchesSlice.getNextLineNumber());
         return SearchResult.of(matchesSlice);
     }
 
-    public SearchSlice findMatchesSlice(String word, int startFrom, int pageSize, boolean fast) {
+    public SearchSlice findMatchesSlice(String word, int startFrom, int pageSize, boolean fast, Function<Map.Entry<String, String>, String> partToSearchInSupplier) {
         LocalDateTime start = LocalDateTime.now();
         List<Map.Entry<String, String>> strictResult = new ArrayList<>();
         List<Map.Entry<String, String>> notStrictResult = new ArrayList<>();
         int i;
         for (i = startFrom; i < dataset.size() && strictResult.size() < pageSize; i++) {
-            String ltLine = dataset.get(i).getKey();
-            if (isContainsWord(word, ltLine, true)) {
+            String lineToSearchIn = partToSearchInSupplier.apply(dataset.get(i));
+            if (isContainsWord(word, lineToSearchIn, true)) {
                 strictResult.add(dataset.get(i));
-            } else if (isContainsWord(word, ltLine, false)) {
+            } else if (isContainsWord(word, lineToSearchIn, false)) {
                 notStrictResult.add(dataset.get(i));
             }
             if (fast && LocalDateTime.now().minusSeconds(6).isAfter(start)) break;
