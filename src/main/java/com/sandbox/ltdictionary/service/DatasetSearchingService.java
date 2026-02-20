@@ -3,7 +3,6 @@ package com.sandbox.ltdictionary.service;
 import com.sandbox.ltdictionary.service.entry.SearchResult;
 import com.sandbox.ltdictionary.service.entry.SearchSlice;
 import com.sandbox.ltdictionary.service.util.DatasetUtil;
-import io.micrometer.observation.Observation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -15,7 +14,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
-import java.util.function.Supplier;
 
 @Slf4j
 @Service
@@ -42,9 +40,9 @@ public class DatasetSearchingService {
         LocalDateTime start = LocalDateTime.now();
         List<Map.Entry<String, String>> strictResult = new ArrayList<>();
         List<Map.Entry<String, String>> notStrictResult = new ArrayList<>();
-        int i;
+        int i = startFrom;
         int endPosition = startFrom == 0 ? dataset.size() - 1 : startFrom - 1;
-        for (i = startFrom; i != endPosition && strictResult.size() < pageSize; i++) {
+        while (i != endPosition && strictResult.size() < pageSize) {
             String lineToSearchIn = partToSearchInSupplier.apply(dataset.get(i));
             if (isContainsWord(word, lineToSearchIn, true)) {
                 strictResult.add(dataset.get(i));
@@ -52,7 +50,11 @@ public class DatasetSearchingService {
                 notStrictResult.add(dataset.get(i));
             }
             if (fast && LocalDateTime.now().minusSeconds(6).isAfter(start)) break;
-            if (i == (dataset.size() - 1)) i = -1;
+            if (i == (dataset.size() - 1)) {
+                i = 0;
+            } else {
+                i++;
+            }
         }
         return new SearchSlice(strictResult, notStrictResult, i == dataset.size() ? 0 : i, pageSize);
     }
