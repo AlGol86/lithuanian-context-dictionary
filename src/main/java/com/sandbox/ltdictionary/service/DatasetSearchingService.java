@@ -33,7 +33,8 @@ public class DatasetSearchingService {
 
     public SearchResult findExamples(String word, int limit, boolean fast, boolean ruLtDirection) {
         SearchSlice matchesSlice = findMatchesSlice(word, autoscrollCounter.getOrDefault(word, 0), limit, fast, ruLtDirection ? Map.Entry::getValue : Map.Entry::getKey);
-        autoscrollCounter.put(word, matchesSlice.getNextLineNumber());
+        if (autoscrollCounter.size() > 1000) this.autoscrollCounter.clear();
+        this.autoscrollCounter.put(word, matchesSlice.getNextLineNumber());
         return SearchResult.of(matchesSlice);
     }
 
@@ -42,7 +43,8 @@ public class DatasetSearchingService {
         List<Map.Entry<String, String>> strictResult = new ArrayList<>();
         List<Map.Entry<String, String>> notStrictResult = new ArrayList<>();
         int i;
-        for (i = startFrom; i < dataset.size() && strictResult.size() < pageSize; i++) {
+        int endPosition = startFrom == 0 ? dataset.size() - 1 : startFrom - 1;
+        for (i = startFrom; i != endPosition && strictResult.size() < pageSize; i++) {
             String lineToSearchIn = partToSearchInSupplier.apply(dataset.get(i));
             if (isContainsWord(word, lineToSearchIn, true)) {
                 strictResult.add(dataset.get(i));
@@ -50,6 +52,7 @@ public class DatasetSearchingService {
                 notStrictResult.add(dataset.get(i));
             }
             if (fast && LocalDateTime.now().minusSeconds(6).isAfter(start)) break;
+            if (i == (dataset.size() - 1)) i = -1;
         }
         return new SearchSlice(strictResult, notStrictResult, i == dataset.size() ? 0 : i, pageSize);
     }

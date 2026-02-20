@@ -24,6 +24,7 @@ public class CachedLemmaResolver {
     private static final Map<String, Set<String>> LEMMA_CACHE = new ConcurrentHashMap<>();
 
     public static Set<String> resolveLemmas(String word) {
+        if (LEMMA_CACHE.size() > 1000) LEMMA_CACHE.clear();
         return LEMMA_CACHE.computeIfAbsent(word, CachedLemmaResolver::resolve);
     }
 

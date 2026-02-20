@@ -9,10 +9,6 @@
 
 <div class="notes">
     <div class="note">Learn LT-RU Words </div>
-    <select id="directionSelect">
-        <option value="lt-ru" selected>Lithuanian → Russian</option>
-        <option value="ru-lt">Russian → Lithuanian</option>
-    </select>
 </div>
 
 <div class="note small">Add a space before the word to search for an exact match</div>
@@ -33,7 +29,6 @@
     async function searchWord() {
 
         const word = document.getElementById("wordInput").value;
-        const direction = document.getElementById("directionSelect").value;
         const resultsDiv = document.getElementById("results");
         const statusDiv = document.getElementById("status");
 
@@ -50,7 +45,7 @@
         statusDiv.className = "loading";
 
         try {
-            const response = await fetch(`/api/learn/${word}?direction=${direction}`);
+            const response = await fetch(`/api/learn/${word}`);
 
             if (!response.ok) {
                 throw new Error("Word not found");
