@@ -1,0 +1,22 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.word-block {
+    margin-bottom: 15px;
+}
+
+input {
+    padding: 5px;
+    font-size: 16px;
+}
+
+.correct {
+    background-color: #c8f7c5;
+    border: 2px solid green;
+}
+
+.wrong {
+    background-color: #f7c5c5;
+    border: 2px solid red;
+}

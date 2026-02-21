@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body{
+            font-family: Arial;
+            background:#f5f6fa;
+        }
+
+        .row{
+            display:flex;
+            align-items:center;
+            margin-bottom:20px;
+        }
+
+        .name{
+            width:120px;
+            font-weight:bold;
+            font-size:18px;
+        }
+
+        .card{
+            background:white;
+            padding:10px;
+            margin-right:10px;
+            border-radius:8px;
+            box-shadow:0 2px 6px rgba(0,0,0,0.15);
+            min-width:120px;
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Results</h1>
+<div id="board"></div>
+
+<script>
+    fetch("/api/grammar-tests/results")
+        .then(res => res.json())
+        .then(data => {
+            const grouped = {};
+            data.forEach(item => {
+                if (!grouped[item.name]) grouped[item.name] = [];
+                grouped[item.name].push(item);
+            });
+
+            const board = document.getElementById("board");
+
+            for (const name in grouped) {
+                const row = document.createElement("div");
+                row.className = "row";
+
+                const label = document.createElement("div");
+                label.className = "name";
+                label.textContent = name;
+                row.appendChild(label);
+
+                grouped[name].forEach(test => {
+                    const card = document.createElement("div");
+                    card.className = "card";
+                    card.innerHTML = `
+                    <strong>${test.page}</strong><br>
+                    Score: ${test.score}<br>
+                    <small>${new Date(test.time).toLocaleTimeString()}</small>
+                `;
+                    row.appendChild(card);
+                });
+
+                board.appendChild(row);
+            }
+        })
+        .catch(err => console.error("Fetch error:", err));
+</script>
+
+</body>
+</html>
