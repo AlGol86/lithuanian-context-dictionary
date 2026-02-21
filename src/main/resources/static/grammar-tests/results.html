@@ -61,8 +61,8 @@
                     card.className = "card";
                     card.innerHTML = `
                     <strong>${test.page}</strong><br>
-                    Score: ${test.score}<br>
-                    <small>${new Date(test.time).toLocaleTimeString()}</small>
+                    Score: ${test.score} %<br>
+                    <small>${new Date(test.time).toLocaleString()}</small>
                 `;
                     row.appendChild(card);
                 });

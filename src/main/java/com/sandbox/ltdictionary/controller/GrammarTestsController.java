@@ -38,7 +38,7 @@ public class GrammarTestsController {
     @PostMapping("/results")
     public void submit(@RequestBody ResultSubmitDto dto) {
 
-        int total = translationsByChapter.get(dto.page).size();
+        int total = translationsByChapter.computeIfAbsent(dto.page, grammarTestDatasetService::loadWords).size();
         int correct = dto.solvedIds().size();
         int percent = (int)Math.round((correct * 100.0) / total);
 
