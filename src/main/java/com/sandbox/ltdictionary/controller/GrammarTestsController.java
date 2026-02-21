@@ -47,6 +47,7 @@ public class GrammarTestsController {
              e -> log.warn("User {} can not worsen score for {}", dto.name, dto.page),
                 () -> resultMap.put(dto.getKey(), new Result(dto.name(), dto.page(), percent, LocalDateTime.now()))
         );
+        if (resultMap.size() > 1000) throw new IllegalStateException("resultMap is exhausted! Size: " + resultMap.size());
         grammarTestDatasetService.persist(resultMap.values());
         this.results = resultMap.values().stream().map(ResultDto::of).toList();
     }
