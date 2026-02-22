@@ -22,7 +22,7 @@ import java.util.Optional;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/grammar-tests")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class GrammarTestsController {
 
@@ -30,12 +30,17 @@ public class GrammarTestsController {
     private final Map<String, List<WordTranslation>> translationsByChapter = new HashMap<>();
     private List<ResultDto> results = new ArrayList<>();
 
-    @GetMapping("{translationPageId}")
+    @GetMapping("grammar-tests/{translationPageId}")
     public List<WordDto> getWords(@PathVariable String translationPageId) {
         return translationsByChapter.computeIfAbsent(translationPageId, grammarTestDatasetService::loadWords).stream().map(WordDto::of).toList();
     }
 
-    @PostMapping("/results")
+    @GetMapping("text-backward-translation-tasks/{translationPageId}")
+    public List<WordDto> getPhrases(@PathVariable String translationPageId) {
+        return translationsByChapter.computeIfAbsent(translationPageId, grammarTestDatasetService::loadPhrases).stream().map(WordDto::of).toList();
+    }
+
+    @PostMapping("grammar-tests/results")
     public void submit(@RequestBody ResultSubmitDto dto) {
 
         int total = translationsByChapter.computeIfAbsent(dto.page, grammarTestDatasetService::loadWords).size();
@@ -52,7 +57,7 @@ public class GrammarTestsController {
         this.results = resultMap.values().stream().map(ResultDto::of).toList();
     }
 
-    @GetMapping("/results")
+    @GetMapping("grammar-tests/results")
     public List<ResultDto> getResults() {
         return results.stream().sorted(Comparator.comparing(ResultDto::score).reversed()).toList();
     }
@@ -64,6 +69,7 @@ public class GrammarTestsController {
         }
 
     }
+
     public record ResultDto(String name, String page, int score, LocalDateTime time) {
 
         static ResultDto of(Result r) {
