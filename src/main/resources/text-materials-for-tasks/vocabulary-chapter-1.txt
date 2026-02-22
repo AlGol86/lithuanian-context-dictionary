@@ -1,0 +1,183 @@
+asmuo,человек,личность
+pilietis,гражданин
+vyras,мужчина
+moteris,женщина
+vaikinas,парень
+mergina,девушка
+berniukas,мальчик
+mergaitė,девочка
+ponas,господин
+ponia,госпожа
+panelė,барышня
+vardas,имя
+pavardė,фамилия
+lytis,пол
+amžius,возраст
+gimimo data,дата рождения
+gimimo diena,день рождения
+tautybė,национальность
+adresas,адрес
+telefonas,телефон
+gyvenamoji vieta,место жительства
+parašas,подпись
+aukštas,высокий
+žemas,низкий
+gražus,красивый
+negražus,некрасивый
+šviesus,светлый
+tamsus,тёмный
+storas,толстый
+plonas,худой
+plaukai,волосы
+ilgi,длинные, мужской р. мн.ч
+trumpi,короткие, мужской р. мн.ч
+garbanoti,кудрявые, мужской р. мн.ч
+tiesūs,прямые, мужской р. мн.ч
+draugiškas,дружелюбный
+malonus,приятный
+darbštus,трудолюбивый
+tingus,ленивый
+protingas,умный
+kūrybingas,творческий
+atviras,открытый
+uždaras,замкнутый
+bailus,трусливый
+drąsus,смелый
+jautrus,чувствительный
+ramus,спокойный
+reiklus,требовательный
+ambasada,посольство
+bankas,банк
+biuras,офис
+firma,фирма
+galerija,галерея
+gamykla,завод
+institutas,институт
+kavinė,кафе
+kirpykla,парикмахерская
+leidykla,издательство
+ligoninė,больница
+mokykla,школа
+parduotuvė,магазин
+policija,полиция
+poliklinika,поликлиника
+prezidentūra,президентура
+universitetas,университет
+registratūra,регистратура
+restoranas,ресторан
+salonas,салон
+teatras,театр
+ūkis,хозяйство,или ферма
+tėvas,отец
+mama,мама
+vyras,муж
+žmona,жена
+sūnus,сын
+dukra,дочь
+vaikas,ребёнок
+dukterėčia,племянница
+sūnėnas,племянник
+kūdikis,младенец
+brolis,брат
+sesuo,сестра
+dėdė,дядя
+teta,тётя
+pusseserė,двоюродная сестра
+pusbrolis,двоюродный брат
+senelė,бабушка
+senelis,дедушка
+giminės,родственники
+vedęs,женатый
+ištekėjusi,замужем
+išsiskyręs,разведённый
+našlys,вдовец
+miręs,умерший
+vienturtis,единственный
+aktorius,актёр
+architektas,архитектор
+bankininkas,банкир
+bibliotekininkas,библиотекарь
+dainininkas,певец
+dėstytojas,преподаватель
+diplomatas,дипломат
+dirigentas,дирижёр
+dizaineris,дизайнер
+finansininkas,финансист
+gaisrininkas,пожарный
+gydytojas,врач
+inžinierius,инженер
+kariškis,военный
+kirpėjas,парикмахер
+medikas,медик
+menininkas,художник
+mokytojas,учитель
+mokslininkas,учёный
+muzikas,музыкант
+padavėjas,официант
+pardavėjas,продавец
+policininkas,полицейский
+prezidentas,президент
+profesorius,профессор
+rašytojas,писатель
+režisierius,режиссёр
+sekretorius,секретарь
+sportininkas,спортсмен
+šokėjas,танцор
+ūkininkas,фермер
+vadybininkas,менеджер
+vairuotojas,водитель
+vedėjas,ведущий
+verslininkas,бизнесмен
+direktorius,директор
+koordinatorius,координатор
+mokinys,ученик
+namų šeimininkė,домохозяйка
+organizatorius,организатор
+padėjėjas,помощник
+pareigūnas,должностное лицо
+patarėjas,советник
+pensininkas,пенсионер
+autorius,автор
+savanoris,волонтёр
+specialistas,специалист
+studentas,студент
+tarnautojas,служащий
+vadovas,руководитель
+administratorius,администратор
+ambasadorius,посол
+darbininkas,рабочий
+darbuotojas,сотрудник
+teisininkas,юрист
+gyventi,жить,инфинитив
+gyvena,живёт,он/она/они наст.вр.
+gyveno,жил(а),он/она/они прош.вр.
+dirbti,работать,инфинитив
+dirba,работает,он/она/они наст.вр.
+dirbo,работал(а),он/она/они прош.вр.
+studijuoti,учиться (в вузе),инфинитив
+studijuoja,учится,он/она/они наст.вр.
+studijavo,учился/училась,он/она/они прош.вр.
+mokyti,обучать/преподавать,инфинитив
+moko,обучает/учит,он/она/они наст.вр.
+mokė,обучал(а)/учил(а),он/она/они прош.вр.
+gydyti,лечить,инфинитив
+gydo,лечит,он/она/они наст.вр.
+gydė,лечил(а),он/она/они прош.вр.
+rašyti,писать,инфинитив
+rašo,пишет,он/она/они наст.вр.
+rašė,писал(а),он/она/они прош.вр.
+vairuoti,водить (транспорт),инфинитив
+vairuoja,водит,он/она/они наст.вр.
+vairavo,водил(а),он/она/они прош.вр.
+kirpti,стричь/резать,инфинитив
+kerpa,стрижёт/режет,он/она/они наст.вр.
+kirpo,стриг(ла)/резал(а),он/она/они прош.вр.
+turėti,иметь,инфинитив
+turi,имеет,он/она/они наст.вр.
+turėjo,имел(а),он/она/они прош.вр.
+versti,переводить,инфинитив
+verčia,переводит,он/она/они наст.вр.
+vertė,перевёл/перевела,он/она/они прош.вр.
+ieškoti,искать,инфинитив
+ieško,ищет,он/она/они наст.вр.
+ieškojo,искал(а),он/она/они прош.вр.
