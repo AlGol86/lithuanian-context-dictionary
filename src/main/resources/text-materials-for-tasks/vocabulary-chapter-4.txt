@@ -1,0 +1,92 @@
+arena,арена
+atostogos,отпуск
+baletas,балет
+baseinas,бассейн
+biblioteka,библиотека
+eilė,очередь
+futbolas,футбол
+galerija,галерея
+gitara,гитара
+kaimo sodyba,деревенская усадьба
+kamuolys,мяч
+kinas,кино
+knyga,книга
+kompiuteriniai žaidimai,компьютерные игры
+koncertas,концерт
+krepšinis,баскетбол
+laikraštis,газета
+muziejus,музей
+nuotrauka,фотография
+opera,опера
+pabaiga,конец
+palapinė,палатка
+paroda,выставка
+paveikslas,картина
+pertrauka,перерыв
+pianinas,пианино
+poilsio namai,дом отдыха
+poilsis,отдых
+pradžia,начало
+savaitgalis,выходные
+skulptūra,скульптура
+spektaklis,спектакль
+sporto klubas,спортклуб
+stadionas,стадион
+stovykla,лагерь
+šachmatai,шахматы
+šaškės,шашки
+teatras,театр
+tenisas (stalo, lauko),теннис (настольный, большой)
+tinklinis,волейбол
+varžybos,соревнования
+vieta,место
+žurnalas,журнал
+apylanka,окрестность
+aplinkkelis,объездная дорога
+atvykimas,прибытие
+autobusas,автобус
+bagažas,багаж
+bilietas (į priekį ir atgal),билет (туда и обратно)
+draudimas (kelionės, sveikatos, transporto),страхование (путешествия, здоровья, транспорта)
+dviratis,велосипед
+eismas,движение (дорожное)
+eismo įvykis,дорожное происшествие
+eismo juosta,полоса движения
+greitkelis,шоссе
+išvykimas,отправление
+kelio ženklas,дорожный знак
+kelionių agentūra,туристическое агентство
+laivas,корабль
+lėktuvas,самолёт
+mašina,машина
+motociklas,мотоцикл
+muitinė,таможня
+oro uostas,аэропорт
+pasienio policija,пограничная полиция
+pasų kontrolė,паспортный контроль
+pėsčiųjų perėja,пешеходный переход
+sankryža,перекрёсток
+skrydis,рейс
+spūstis,пробка (дорожная)
+stotis,станция
+traukinys,поезд
+uostas,порт
+vairuotojo pažymėjimas,водительское удостоверение
+viešasis transportas,общественный транспорт
+atidarytas,открытый
+atidėtas,отложенный
+atidus,внимательный
+atšauktas,отменённый
+įdomus,интересный
+ilgas,длинный
+juokingas,смешной
+lengvas,лёгкий
+nuobodus,скучный
+pažintinis,познавательный
+poilsinis,рекреационный
+saugus,безопасный
+slidus,скользкий
+sunkus,тяжёлый
+šlapias,мокрый
+trumpas,короткий
+uždarytas,закрытый
