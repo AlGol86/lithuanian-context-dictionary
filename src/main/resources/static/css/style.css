@@ -88,6 +88,30 @@ button {
     margin-bottom: 4px;
 }
 
+.input-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.input-wrapper input {
+    padding-right: 28px;
+}
+
+.clear-btn {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 36px;
+    color: #888;
+    display: none;
+}
+
+.clear-btn:hover {
+    color: #000;
+}
+
 #directionSelect {
     font-size: 13px;
     padding: 3px 3px;
