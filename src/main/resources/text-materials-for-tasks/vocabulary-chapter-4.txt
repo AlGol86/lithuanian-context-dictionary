@@ -3,7 +3,7 @@ atostogos,отпуск
 baletas,балет
 baseinas,бассейн
 biblioteka,библиотека
-eilė,очередь
+eilė,очередь/ряд
 futbolas,футбол
 galerija,галерея
 gitara,гитара
@@ -36,20 +36,20 @@ stovykla,лагерь
 šachmatai,шахматы
 šaškės,шашки
 teatras,театр
-tenisas (stalo, lauko),теннис (настольный, большой)
+tenisas,теннис
 tinklinis,волейбол
 varžybos,соревнования
 vieta,место
 žurnalas,журнал
-apylanka,окрестность
+apylanka,объезд
 aplinkkelis,объездная дорога
 atvykimas,прибытие
 autobusas,автобус
 bagažas,багаж
-bilietas (į priekį ir atgal),билет (туда и обратно)
-draudimas (kelionės, sveikatos, transporto),страхование (путешествия, здоровья, транспорта)
+bilietas į priekį ir atgal,билет туда и обратно
+draudimas,страхование
 dviratis,велосипед
-eismas,движение (дорожное)
+eismas,дорожное движение (одно слово)
 eismo įvykis,дорожное происшествие
 eismo juosta,полоса движения
 greitkelis,шоссе
